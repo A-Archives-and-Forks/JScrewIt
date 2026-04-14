@@ -1673,6 +1673,7 @@ function getFHPaddingEntries(index)
     useLocaleNumeralDefinition('ر', '"ar"', NaN, 4, LOCALE_NUMERALS_EXT);
     useLocaleNumeralDefinition('ق', '"ar"', NaN, 5, LOCALE_NUMERALS_EXT);
     useLocaleNumeralDefinition('م', '"ar"', NaN, 6, LOCALE_NUMERALS_EXT);
+    useLocaleNumeralDefinition('ً', '"ar"', NaN, 7, LOCALE_NUMERALS_EXT);
     useLocaleNumeralDigitDefinitions('"bn"', 0x09e6, LOCALE_NUMERALS_BN);
     useLocaleNumeralDigitDefinitions('"fa"', 0x06f0);
     useLocaleNumeralDefinition('٬', '"fa"', 1000, 1);

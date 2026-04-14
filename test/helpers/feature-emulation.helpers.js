@@ -740,7 +740,6 @@
         LOCALE_NUMERALS_EXT:
         function ()
         {
-            this.arabicNaNString = 'ليس\xa0رقم';
             registerNumberToLocaleStringAdapter
             (
                 this,
@@ -749,9 +748,8 @@
                     switch (locale)
                     {
                     case 'ar':
-                    case 'ar-td':
                         if (this !== this)
-                            return 'ليس\xa0رقم';
+                            return 'ليس\xa0رقمًا';
                         break;
                     case 'fa':
                         if (this !== this)

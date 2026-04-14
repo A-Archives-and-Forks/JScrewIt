@@ -412,7 +412,7 @@ Available in Chrome, Edge, Firefox, Internet Explorer 11 on Windows 10, Safari b
 
 Extended localized number formatting.
 
-Localized number formatting including the output of the first three letters in the second word of the Arabic string representation of NaN \("رقم"\), the letters in the Russian string representation of NaN \("не число"\) and the letters in the Persian string representation of NaN \("ناعدد"\).
+Localized number formatting including the output of the first four characters in the second word of the Arabic string representation of NaN \("رقمً"\), the letters in the Russian string representation of NaN \("не число"\) and the letters in the Persian string representation of NaN \("ناعدد"\).
 
 #### Remarks
 

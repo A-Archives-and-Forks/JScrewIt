@@ -306,15 +306,15 @@ var featureInfos =
     {
         description:
         'Extended localized number formatting.\n' +
-        'Localized number formatting including the output of the first three letters in the ' +
-        'second word of the Arabic string representation of NaN ("رقم"), the letters in the ' +
+        'Localized number formatting including the output of the first four characters in the ' +
+        'second word of the Arabic string representation of NaN ("رقمً"), the letters in the ' +
         'Russian string representation of NaN ("не\xa0число") and the letters in the Persian ' +
         'string representation of NaN ("ناعدد").',
         check:
         function ()
         {
             var available =
-            checkLocaleNumeral('ar', NaN, /^ليس.رقم/) &&
+            checkLocaleNumeral('ar', NaN, /^ليس.رقمً/) &&
             checkLocaleNumeral('fa', NaN, /^ناعد/) &&
             checkLocaleNumeral('ru', NaN, /^не.число/);
             return available;
