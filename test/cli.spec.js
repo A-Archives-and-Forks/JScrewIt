@@ -49,101 +49,100 @@ describe
         const paramDataList =
         [
             {
-                description:            'shows the help message with option "--help"',
-                screwArgs:              ['--help'],
-                expectedStdout:         /^Usage: screw\.js .*\n$/s,
-                expectedStderr:         '',
-                expectedExitCode:       0,
+                description:        'shows the help message with option "--help"',
+                screwArgs:          ['--help'],
+                expectedStdout:     /^Usage: screw\.js .*\n$/s,
+                expectedStderr:     '',
+                expectedExitCode:   0,
             },
             {
-                description:            'shows the version number with option "--version"',
-                screwArgs:              ['--version'],
-                expectedStdout:         /^JScrewIt \d+\.\d+\.\d+\n$/,
-                expectedStderr:         '',
-                expectedExitCode:       0,
+                description:        'shows the version number with option "--version"',
+                screwArgs:          ['--version'],
+                expectedStdout:     /^JScrewIt \d+\.\d+\.\d+\n$/,
+                expectedStderr:     '',
+                expectedExitCode:   0,
             },
             {
-                description:            'shows an error message with an invalid option',
-                screwArgs:              ['--foo'],
-                expectedStdout:         '',
+                description:        'shows an error message with an invalid option',
+                screwArgs:          ['--foo'],
+                expectedStdout:     '',
                 expectedStderr:
                 'screw.js: Unknown option \'--foo\'. To specify a positional argument starting ' +
                 'with a \'-\', place it at the end of the command after \'--\', as in \'-- ' +
                 '"--foo".\n' +
                 'Try "screw.js --help" for more information.\n',
-                expectedExitCode:       1,
+                expectedExitCode:   1,
             },
             {
-                description:
-                'shows an error message when an invalid feature is specified',
-                screwArgs:              ['-f', 'FOO'],
-                expectedStdout:         '',
-                expectedStderr:         'Unknown feature "FOO"\n',
-                expectedExitCode:       1,
+                description:        'shows an error message when an invalid feature is specified',
+                screwArgs:          ['-f', 'FOO'],
+                expectedStdout:     '',
+                expectedStderr:     'Unknown feature "FOO"\n',
+                expectedExitCode:   1,
             },
             {
-                description:            'shows an error message when the input file does not exist',
-                screwArgs:              ['""'],
-                expectedStdout:         '',
-                expectedStderr:         /^ENOENT\b. no such file or directory\b.*\n$/,
-                expectedExitCode:       1,
+                description:        'shows an error message when the input file does not exist',
+                screwArgs:          ['""'],
+                expectedStdout:     '',
+                expectedStderr:     /^ENOENT\b. no such file or directory\b.*\n$/,
+                expectedExitCode:   1,
             },
             {
-                description:            'prints the encoded input interactively',
-                screwArgs:              [],
+                description:        'prints the encoded input interactively',
+                screwArgs:          [],
                 childProcessHandler(childProcess)
                 {
                     childProcess.stdin.write('10\n');
                     childProcess.stdin.end();
                 },
-                expectedStdout:         'SCREW> +(+!![]+[+[]])\nSCREW> ',
-                expectedStderr:         '',
-                expectedExitCode:       0,
+                expectedStdout:     'SCREW> +(+!![]+[+[]])\nSCREW> ',
+                expectedStderr:     '',
+                expectedExitCode:   0,
             },
             {
-                description:            'prints an error message interactively',
-                screwArgs:              ['-x'],
+                description:        'prints an error message interactively',
+                screwArgs:          ['-x'],
                 childProcessHandler(childProcess)
                 {
                     childProcess.stdin.write('?\n');
                     childProcess.stdin.end();
                 },
-                expectedStdout:         'SCREW> SCREW> ',
-                expectedStderr:         'Encoding failed\n',
-                expectedExitCode:       0,
+                expectedStdout:     'SCREW> SCREW> ',
+                expectedStderr:     'Encoding failed\n',
+                expectedExitCode:   0,
             },
             {
-                description:            'ignores empty input interactively',
-                screwArgs:              [],
+                description:        'ignores empty input interactively',
+                screwArgs:          [],
                 childProcessHandler(childProcess)
                 {
                     childProcess.stdin.write('\n');
                     childProcess.stdin.end();
                 },
-                expectedStdout:         'SCREW> SCREW> ',
-                expectedStderr:         '',
-                expectedExitCode:       0,
+                expectedStdout:     'SCREW> SCREW> ',
+                expectedStderr:     '',
+                expectedExitCode:   0,
             },
             {
-                description:            'encodes a file and shows the output',
-                screwArgs:              ['test/fixtures/0.txt'],
-                expectedStdout:         '+[]\n',
-                expectedStderr:         '',
-                expectedExitCode:       0,
+                description:        'encodes a file and shows the output',
+                screwArgs:          ['test/fixtures/0.txt'],
+                expectedStdout:     '+[]\n',
+                expectedStderr:     '',
+                expectedExitCode:   0,
             },
             {
-                description:            'encodes a file and writes the output to a file',
-                screwArgs:              ['test/fixtures/0.txt', outputFileName1],
+                description:        'encodes a file and writes the output to a file',
+                screwArgs:          ['test/fixtures/0.txt', outputFileName1],
                 expectedStdout:
                 /^Original size: .*\nScrewed size: .*\nExpansion factor: .*\nEncoding time: .*\n$/,
-                expectedStderr:         '',
-                expectedFiles:          expectedFiles1,
-                expectedExitCode:       0,
+                expectedStderr:     '',
+                expectedFiles:      expectedFiles1,
+                expectedExitCode:   0,
             },
             {
                 description:
                 'encodes a file, writes the output to a file and prints a diagnostic report',
-                screwArgs:              ['-d', 'test/fixtures/0.txt', outputFileName2],
+                screwArgs:          ['-d', 'test/fixtures/0.txt', outputFileName2],
                 expectedStdout:
                 RegExp
                 (
@@ -154,13 +153,13 @@ describe
                     'Encoding time: .*\n' +
                     '$',
                 ),
-                expectedStderr:         '',
-                expectedFiles:          expectedFiles2,
-                expectedExitCode:       0,
+                expectedStderr:     '',
+                expectedFiles:      expectedFiles2,
+                expectedExitCode:   0,
             },
             {
-                descriptions:           'shows the number of bytes in the input as original size',
-                screwArgs:              ['-d', 'test/fixtures/∞.txt', createOutputFileName()],
+                description:        'shows the number of bytes in the input as original size',
+                screwArgs:          ['-d', 'test/fixtures/∞.txt', createOutputFileName()],
                 expectedStdout:
                 RegExp
                 (
@@ -171,8 +170,8 @@ describe
                     'Encoding time: .*\n' +
                     '$',
                 ),
-                expectedStderr:         '',
-                expectedExitCode:       0,
+                expectedStderr:     '',
+                expectedExitCode:   0,
             },
         ];
 
